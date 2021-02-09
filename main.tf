@@ -6,6 +6,9 @@ provider "aws" {
   secret_key = var.aws_secret_key
   }
 
+variable "aws_access_key" {}
+variable "aws_secret_key" {}
+
 data "aws_security_group" "IGT_Ansible" {
   name= "IGT_Ansible"
 }
