@@ -8,7 +8,9 @@ data "aws_security_group" "IGT_Ansible" {
   name= "IGT_Ansible"
 }
 
-
+variable "region" {
+  default = "us-west-2"
+}
 
 
 resource "aws_instance" "sql2019" {
