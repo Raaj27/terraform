@@ -11,7 +11,9 @@ data "aws_security_group" "IGT_Ansible" {
 variable "region" {
   default = "us-west-2"
 }
-
+variable "key_name" {
+  default = "windowssql"
+}
 
 resource "aws_instance" "sql2019" {
   ami           = "ami-0ce37705b0668418d"
