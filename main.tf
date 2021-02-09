@@ -11,6 +11,7 @@ resource "aws_instance" "sql2019" {
   instance_type = "t2.micro"
   key_name = var.key_name
  vpc_security_group_ids = [data.aws_security_group.IGT_Ansible.id]
+  region = var.aws_region
 }
 
 
@@ -20,6 +21,8 @@ resource "aws_instance" "centOS7" {
   instance_type = "t2.micro"
   key_name = var.key_name
  vpc_security_group_ids = [data.aws_security_group.IGT_Ansible.id]
+    region = var.aws_region
+
 }
 
                                   
