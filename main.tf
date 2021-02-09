@@ -1,4 +1,9 @@
 
+
+provider "aws" {
+  region= var.region
+  }
+
 data "aws_security_group" "IGT_Ansible" {
   name= "IGT_Ansible"
 }
