@@ -1,7 +1,6 @@
 
 
 
-  region= var.region
   
   
 
