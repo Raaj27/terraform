@@ -5,6 +5,7 @@
  region = var.region
 }
   
+variable "instance_count" {}
 
 
 
