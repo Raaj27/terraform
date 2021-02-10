@@ -29,9 +29,5 @@ resource "aws_instance" "centOS7" {
 
 }
 
-variable "instance_count" {
-  description = "Number of instances to provision."
-  type        = number
-  default     = 2
-}
+
 
