@@ -21,7 +21,7 @@ variable "key_name" {
 
 resource "aws_instance" "sql2019" {
   ami           = "ami-0533adef457a65563"
-  instance_type = "t2.micro"
+  instance_type = "t2.medium"
   key_name = var.key_name
  vpc_security_group_ids = [data.aws_security_group.IGT_Ansible.id]
   
