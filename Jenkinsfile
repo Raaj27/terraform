@@ -3,6 +3,7 @@ pipeline {
   parameters {
     password (name: 'AWS_ACCESS_KEY_ID')
     password (name: 'AWS_SECRET_ACCESS_KEY')
+    string defaultValue: '2', description: '', name: 'count', trim: false
   }
   environment {
    TF_WORKSPACE = 'terraform' //Sets the Terraform Workspace
