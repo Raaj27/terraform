@@ -3,7 +3,7 @@ pipeline {
   parameters {
     password (name: 'AWS_ACCESS_KEY_ID')
     password (name: 'AWS_SECRET_ACCESS_KEY')
-    string defaultValue: '2', description: '', name: 'INSTANCE_COUNT', trim: false
+    number defaultValue: '2', description: '', name: 'count', trim: false
   }
   environment {
    TF_WORKSPACE = 'terraform' //Sets the Terraform Workspace
@@ -11,7 +11,7 @@ pipeline {
     TF_IN_AUTOMATION = 'true'
     AWS_ACCESS_KEY_ID = "${params.AWS_ACCESS_KEY_ID}"
     AWS_SECRET_ACCESS_KEY = "${params.AWS_SECRET_ACCESS_KEY}"
-    INSTANCE_COUNT = "${params.INSTANCE_COUNT}"
+    count = "${params.count}"
   }
   stages {
     stage('Terraform Init') {
