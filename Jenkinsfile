@@ -15,7 +15,7 @@ pipeline {
   stages {
     stage('Create Instance') {
       steps {
-        sh "aws ec2 run-instances --image-id ami-005c06c6de69aee84 --count "$COUNT" --instance-type t2.micro --region us-west-1"
+        sh 'aws ec2 run-instances --image-id ami-005c06c6de69aee84 --count "$COUNT" --instance-type t2.micro --region us-west-1'
       }
     
     }
