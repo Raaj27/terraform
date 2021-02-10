@@ -5,7 +5,9 @@
  region = var.region
 }
   
-variable "instance_count" {}
+variable "instance_count" {
+  default = 2
+  }
 
 
 
@@ -22,7 +24,7 @@ variable "key_name" {
 
 resource "aws_instance" "centOS7" {
   ami           = "ami-005c06c6de69aee84"
-  count         = var.instance_count
+  count         = local.instance_count
   instance_type = "t2.micro"
   key_name = var.key_name
  vpc_security_group_ids = [data.aws_security_group.IGT_Ansible.id]
