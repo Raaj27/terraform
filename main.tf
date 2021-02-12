@@ -6,9 +6,7 @@
 }
 
 
-resource "aws_eip" "lb" {
-  vpc      = true
-}
+
 
 
 
@@ -32,15 +30,7 @@ resource "aws_instance" "sql2019" {
   
 }
 
-/*resource "aws_eip_association" "eip_assoc" {
-  instance_id   = aws_instance.sql2019.id
-  allocation_id = aws_eip.lb.id
-}
 
-resource "aws_eip_association" "eip_assoc" {
-  instance_id   = aws_instance.centOS7.id
-  allocation_id = aws_eip.lb.id
-} */
 
 
 resource "aws_instance" "centOS7" {
