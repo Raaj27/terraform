@@ -41,8 +41,12 @@ resource "aws_instance" "centOS7" {
     
 }
 
-output " ip_address" {
+output "windowsip" {
   value = aws_instance.sql2019.private_ip
-  value = aws_instance.centos7.private_ip
 
 }                            
+
+output "linuxip" {
+    value = aws_instance.centOS7.private_ip
+
+}
