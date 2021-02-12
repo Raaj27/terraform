@@ -4,7 +4,11 @@
   provider "aws" {
  region = var.region
 }
-  
+
+
+resource "aws_eip" "lb" {
+  vpc      = true
+}
 
 
 
@@ -28,6 +32,15 @@ resource "aws_instance" "sql2019" {
   
 }
 
+/*resource "aws_eip_association" "eip_assoc" {
+  instance_id   = aws_instance.sql2019.id
+  allocation_id = aws_eip.lb.id
+}
+
+resource "aws_eip_association" "eip_assoc" {
+  instance_id   = aws_instance.centOS7.id
+  allocation_id = aws_eip.lb.id
+} */
 
 
 resource "aws_instance" "centOS7" {
@@ -36,7 +49,10 @@ resource "aws_instance" "centOS7" {
   key_name = var.key_name
  vpc_security_group_ids = [data.aws_security_group.IGT_Ansible.id]
     
-
 }
 
-                                  
+output "IP Address" {
+  value = aws_instance.sql2019.private_ip
+  value = aws_instance.centos7.private_ip
+
+}                            
