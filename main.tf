@@ -1,13 +1,24 @@
 
 
 
+variable "vpc_id" {}
+
+data "aws_vpc" "selected" {
+  id = var.vpc_id
+}
+
+
+
+
+
+
+
+
+
   provider "aws" {
  region = var.region
 }
 
-resource "aws_vpc" "main" {
-  cidr_block = "172.31.0.0/16"
-}
 
 
 
@@ -28,6 +39,7 @@ resource "aws_instance" "sql2019" {
   instance_type = "t3.xlarge"
   key_name = var.key_name
  vpc_security_group_ids = [data.aws_security_group.IGT_Ansible.id]
+  vpc_id = data.aws_vpc.selected.id
   
   
 }
@@ -40,6 +52,7 @@ resource "aws_instance" "centOS7" {
   instance_type = "t2.micro"
   key_name = var.key_name
  vpc_security_group_ids = [data.aws_security_group.IGT_Ansible.id]
+  vpc_id = data.aws_vpc.selected.id
     
 }
 
