@@ -1,3 +1,3 @@
 variable "instance_count" {
-  type = string
+  type = number
   }
