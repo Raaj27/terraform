@@ -15,7 +15,9 @@ pipeline {
   stages {
     stage('Create Instance') {
       steps {
-        sh 'terraform init && terraform plan -var "instance_count=${params.COUNT}" && terraform apply --auto-approve'
+        sh "terraform init" 
+        sh 'terraform plan -var="instance_count=${params.COUNT}"' 
+        sh  "terraform apply --auto-approve"
       }
     
     }
