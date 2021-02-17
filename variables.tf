@@ -1,3 +1,3 @@
-variable "instance_count" {
+variable "instancecount" {
   type = number
   }
