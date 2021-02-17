@@ -35,6 +35,6 @@ resource "aws_instance" "centOS7" {
 
                       
 output "linuxip" {
-    value = aws_instance.centOS7.private_ip[count.index]
+    value = aws_instance.centOS7[count.index].private_ip
 
 }
