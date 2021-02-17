@@ -3,29 +3,22 @@ pipeline {
   parameters {
     password (name: 'AWS_ACCESS_KEY_ID')
     password (name: 'AWS_SECRET_ACCESS_KEY')
+    string defaultValue: '2', description: '', name: 'COUNT', trim: false
   }
   environment {
-   TF_WORKSPACE = 'terraform' //Sets the Terraform Workspace
    
-    TF_IN_AUTOMATION = 'true'
     AWS_ACCESS_KEY_ID = "${params.AWS_ACCESS_KEY_ID}"
     AWS_SECRET_ACCESS_KEY = "${params.AWS_SECRET_ACCESS_KEY}"
+    COUNT = "${params.COUNT}"
+    
   }
   stages {
-    stage('Terraform Init') {
+    stage('Create Instance') {
       steps {
-        sh "terraform init -input=false"
+        sh "terraform init && terraform plan -var count=${params.COUNT}" && terraform apply --auto-approve"
       }
+    
     }
-    stage('Terraform Plan') {
-      steps {
-        sh "terraform plan -out=tfplan -input=false -var-file='terraform.tfvars'"
-      }
-    }
-    stage('Terraform Apply') {
-      steps {
-        sh "terraform apply -input=false tfplan"
-      }
-    }
+    
   }
 }
