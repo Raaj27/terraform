@@ -9,14 +9,14 @@ pipeline {
    
     AWS_ACCESS_KEY_ID = "${params.AWS_ACCESS_KEY_ID}"
     AWS_SECRET_ACCESS_KEY = "${params.AWS_SECRET_ACCESS_KEY}"
-    COUNT = "${params.COUNT}.toInteger()"
+    COUNT = "${params.COUNT}"
     
   }
   stages {
     stage('Create Instance') {
       steps {
         sh "terraform init" 
-        sh "terraform plan -var=instance_count=${params.COUNT}"
+        sh "terraform plan -var=instancecount=${params.COUNT}"
         sh  "terraform apply --auto-approve"
       }
     
