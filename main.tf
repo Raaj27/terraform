@@ -31,6 +31,11 @@ resource "aws_instance" "centOS7" {
   key_name = var.key_name
  vpc_security_group_ids = [data.aws_security_group.default.id]
     count = var.instance_count
+  tags = {Name = Centos}
+}
+
+output "private_ips" {
+value       = [aws_instance.centOS7.private_ip]
 }
 
                       
