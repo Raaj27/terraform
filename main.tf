@@ -35,7 +35,7 @@ resource "aws_instance" "centOS7" {
 }
 
 output "private_ips" {
-  value =join("",aws_instance.centOS7[*].private_ip)
+  value =join("", aws_instance.centOS7[*].private_ip)
 }
 
                       
