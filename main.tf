@@ -1,14 +1,6 @@
 
 
 
-variable "vpc_id" {}
-
-data "aws_vpc" "main" {
-  id = var.vpc_id
-}
-
-
-
 
 
 
@@ -18,10 +10,6 @@ data "aws_vpc" "main" {
   provider "aws" {
  region = var.region
 }
-
-
-
-
 
 data "aws_security_group" "default" {
   name= "default"
@@ -34,18 +22,6 @@ variable "key_name" {
   default = "windowssql"
 }
 
-resource "aws_instance" "sql2019" {
-  ami           = "ami-0533adef457a65563"
-  instance_type = "t3.xlarge"
-  key_name = var.key_name
- vpc_security_group_ids = [data.aws_security_group.default.id]
-  
-  
-  
-}
-
-
-
 
 resource "aws_instance" "centOS7" {
   ami           = "ami-005c06c6de69aee84"
@@ -55,11 +31,7 @@ resource "aws_instance" "centOS7" {
     
 }
 
-output "windowsip" {
-  value = aws_instance.sql2019.private_ip
-
-}                            
-
+                      
 output "linuxip" {
     value = aws_instance.centOS7.private_ip
 
