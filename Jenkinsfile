@@ -3,7 +3,7 @@ pipeline {
   parameters {
     password (name: 'AWS_ACCESS_KEY_ID')
     password (name: 'AWS_SECRET_ACCESS_KEY')
-    number defaultValue: '0', description: '', name: 'COUNT', trim: false
+    string defaultValue: '0', description: '', name: 'COUNT', trim: false
   }
   environment {
    
