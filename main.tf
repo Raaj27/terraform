@@ -4,9 +4,7 @@
 
 
 
-variable "instance_count" {
-  default = 2
-  }
+variable "instance_count" {}
 
 
   provider "aws" {
