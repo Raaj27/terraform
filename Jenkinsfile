@@ -18,7 +18,7 @@ pipeline {
       steps {
         sh "terraform init -input=false" 
         sh "terraform plan -input=false -var instancecount=\"${params.instancecount}\""
-        sh  "terraform apply -input=false --auto-approve"
+        sh  "terraform apply -input=false --auto-approve -var instancecount=\"${params.instancecount}\""
       }
     
     }
